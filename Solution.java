@@ -10,9 +10,7 @@ public class Solution {
             prevValues.put(n, n);
             return n;
         } 
-            
-        int value = climbStairs(n - 1) + climbStairs(n - 2);
-        prevValues.put(n, value);
-        return value;
+        prevValues.put(n, climbStairs(n - 1) + climbStairs(n - 2));
+        return prevValues.get(n);
     }
 }
