@@ -1,20 +1,18 @@
 import java.util.*;
 
 public class Solution {
-    List<Integer> prevValues = new ArrayList<>();
-
+    Map<Integer, Integer> prevValues = new HashMap<>();
     public int climbStairs(int n) {
-        if (prevValues.get(n) != null)
+        if (prevValues.containsKey(n))
             return prevValues.get(n);
-        
-        if (n == 1)
-            return 1;
-        if (n == 2)
-            return 2;
 
+        if (n == 1 || n == 2) {
+            prevValues.put(n, n);
+            return n;
+        } 
+            
         int value = climbStairs(n - 1) + climbStairs(n - 2);
-        prevValues.add(n, value);
+        prevValues.put(n, value);
         return value;
-        
     }
 }
